@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+    body{
+      background: #353535;
+        color: white;
+        /* font-family: 'Raleway', sans-serif; */
+    }
+    .navbar{
+      background-color: #ffce00;
+    }
+    .nav-link{
+      font-weight: 600;
+    }
+    .navbar-brand{
+      color: rgb(103, 19, 19);
+      font-weight: 700;
+    }
+    .card{
+      width: 90%;
+      height: auto;
+      background-color:transparent;
+      border: 1px solid #ffce00;
+      margin-top: 30px;
+      padding: 5px;
+      padding-bottom: 10px;
+    }
+    .card img{
+      width: 100%;
+      height: 150px;
+      
+    }
+    .card h6{
+      color: rgb(255, 255, 255);
+      padding-left: 10px;
+      padding-top: 10px;
+      margin-bottom: 0 !important;
+    }
+    .rating{
+      color: rgb(255, 255, 255);
+      padding-left: 10px;
+      margin-bottom: 0 !important;
+    }
+    .price{
+      color: rgb(255, 255, 255);
+      padding-left: 10px;
+    }
+    .btns{
+      display: flex;
+      justify-content: space-evenly;
+      margin-top: 13px;
+    }
+    .btns a{
+      text-decoration: none;
+      padding: 10px 20px;
+    }
+    .buy{
+      background-color:#ffce00;
+      color: black;
+      font-weight: 700;
+    }
+    .cart{
+      background-color: rgb(39, 39, 39);
+      font-weight: 700;
+      color: white;
+    }
+    @media(min-width:300px) and (max-width:575px){
+      .card{
+        margin: auto;
+        /* margin-bottom: 30px; */
+        margin-top: 20px;
+      }
+    }
+</style>
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="product.html">Online Shopiee</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#">About</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Cart
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <!-- <a class="nav-link active">Disabled</a> -->
+          </li>
+        </ul>
+        <div class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" onkeyup="searchFunction()" id="inp">
+          <!-- <button class="btn btn-outline-success" type="submit">Search
+          </button> -->
+        </div>
+
+      </div>
+    </div>
+  </nav>
+    <div class="container">
+      <div class="row" id="main">
+  <!-- <div class="container">
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="card">
+              <img src="./365642.jpg" alt="">
+              <h6>Apple Iphone x</h6>
+              <div class="rating">rating</div>
+              <div class="price">$300</div>
+              <div class="btns">
+                <a href="" class="buy">Buy now</a>
+                <a href="" class="cart">Add To Cart</a>
+              </div>
+            </div>
+          </div>
+        </div>
+       </div> -->
+      </div>
+    </div>
+
+    <script>
+       const url=window.location.href;
+       const search=new URLSearchParams(url.split("?")[1]);
+
+       const brand=search.get("id")
+       console.log(brand);
+
+    fetch(`https://dummyjson.com/products`).then((res)=>res.json()).then((data)=>{
+        console.log(data);
+        s=""
+       data.products.filter((dt)=>{
+        if(dt.brand==brand)
+        {
+            s+=`<div class="col-lg-3">
+            <div class="card">
+              <img src="${dt.thumbnail}" alt="">
+              <h6>${dt.brand} ${dt.title}</h6>
+              <div class="rating">Rating: ${dt.rating} ✪✪✪✪✪</div>
+              <div class="price">$${dt.price}</div>
+              <div class="btns">
+                <a href="" class="buy">Buy now</a>
+                <a href="" class="cart">Add To Cart</a>
+              </div>
+            </div>
+          </div>
+       </div>`
+        }
+       })
+         document.getElementById("main").innerHTML=s
+    })
+
+    
+    </script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
+</html>
