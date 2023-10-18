@@ -1,127 +1,217 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Shopee</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-</head>
-<style>
-  body{
-    background: #353535;
-  }
-  .navbar{
-      background-color: #ffce00;
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Online Shopee</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  </head>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Gabarito&display=swap');
+    /* font-family: 'Gabarito', sans-serif; */
+    body{
+      background: #353535;
+      font-family: 'Gabarito', sans-serif;
+      padding-bottom: 50px;
     }
-    .nav-link{
-      font-weight: 600;
-    }
-    .navbar-brand{
-      color: rgb(103, 19, 19);
-      font-weight: 700;
-    }
-    .container{
-        margin-top: 4%;
-    }
-    .caard{
-      background-color: transparent;
-        width: 100%;
-        margin-top: 20px;
-        height: 200px;
-        margin-top: 20px;
-        border: 1px solid #ffce00;
-        border-radius: 4px;
-        text-align: center;
-        padding-top: 25%;
-    }
-    .caard a{
-        text-decoration: none;
-        color: rgb(255, 255, 255);
-        font-size: 25px;
-        letter-spacing: 3px;
-        font-weight: 700;
-    }
-    @media(min-width:300px) and (max-width:575px){
-      .card{
-        margin: auto;
-        margin-bottom: 30px;
+    .navbar{
+        background-color: #ffce00;
       }
-    }
-</style>
-<body>
-  <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="product.html">Online Shopiee</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="#">About</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Cart
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <!-- <a class="nav-link active">Disabled</a> -->
-          </li>
-        </ul>
-        <div class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" onkeyup="searchFunction()" id="inp">
-          <!-- <button class="btn btn-outline-success" type="submit">Search
-          </button> -->
-        </div>
-
-      </div>
-    </div>
-  </nav>
-
-      <div class="container">
-        <div class="row" id="main">
-            <!-- <div class="row">
-                <div class="col-lg-3">
-                  <div class="caard">
-                   <a href="">BRAND-NAME</a>
-                  </div>
-                </div>
-        </div> -->
-      </div>
-      </div>
-    
-    <script>
-        async function myFunction(){
-            try{
-                res=await fetch("https://dummyjson.com/products")
-                data=await res.json();
-                console.log(data);
-                s="";
-                data.products.map((dt)=>{
-                    console.log(dt.category);
-                    s+=`<div class="col-lg-3">
-                  <div class="caard">
-                   <a href="brands.html?id=${dt.category}">${dt.category}</a>
-                  </div>
-                </div>`
-                })
-                document.getElementById("main").innerHTML=s
-            }catch(error){
-                console.log("error");
-            }
+      .nav-link{
+        font-weight: 600;
+      }
+      .navbar-brand{
+        color: rgb(103, 19, 19);
+        font-weight: 700;
+      }
+      .container{
+          margin-top: 4%;
+      }
+      .caard{
+        background-color: transparent;
+          width: 100%;
+          margin-top: 20px;
+          height: 200px;
+          margin-top: 20px;
+          box-shadow: 0px 0px 10px -3px #ffce00;
+          border: 1px solid #ffce00;
+          border-radius: 4px;
+          text-align: center;
+          padding-top: 20%;
+      }
+      .caard a{
+          text-decoration: none;
+          color: rgb(168, 168, 168);
+          font-size: 20px;
+          letter-spacing: 7px;
+          font-weight: 700;
+      }
+      .caard a:hover{
+        border-bottom: 3px solid #ffce00;
+      }
+      @media(min-width:300px) and (max-width:575px){
+        .card{
+          margin: auto;
+          margin-bottom: 30px;
         }
-        myFunction()
-        </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-</body>
-</html>
+      }
+  </style>
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="product.html">Online Shopiee</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">About</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Cart
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <!-- <a class="nav-link active">Disabled</a> -->
+            </li>
+          </ul>
+          <div class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" onkeyup="searchFunction()" id="inp">
+            <!-- <button class="btn btn-outline-success" type="submit">Search
+            </button> -->
+          </div>
+
+        </div>
+      </div>
+    </nav>
+
+        <div class="container">
+          <div class="row" id="main">
+              <!-- <div class="row">
+                  <div class="col-lg-3">
+                    <div class="caard">
+                    <a href="">BRAND-NAME</a>
+                    </div>
+                  </div>
+          </div> -->
+        </div>
+        </div>
+      
+      <script>
+          async function myFunction(){
+              try{
+                  res=await fetch("https://dummyjson.com/products")
+                  data=await res.json();
+                  console.log(data);
+                  s="";
+                      s+=`<div class="col-lg-4">
+                    <div class="caard">
+                    <a href="brands.html?id=laptops">LAPTOPS</a>
+                    </div>
+                  </div>
+                  
+                  <div class="col-lg-4">
+                    <div class="caard">
+                    <a href="brands.html?id=smartphones">SMARTPHONES</a>
+                    </div>
+                  </div>
+                  
+                  <div class="col-lg-4">
+                    <div class="caard">
+                    <a href="brands.html?id=fragrances">FRANGRANCES</a>
+                    </div>
+                  </div>
+                  
+                  <div class="col-lg-4">
+                    <div class="caard">
+                    <a href="brands.html?id=skincare">SKINCARE</a>
+                    </div>
+                  </div>
+                  
+                  <div class="col-lg-4">
+                    <div class="caard">
+                    <a href="brands.html?id=groceries">GROCERIES</a>
+                    </div>
+                  </div>
+                  
+                  <div class="col-lg-4">
+                    <div class="caard">
+                    <a href="brands.html?id=home-decoration">HOME-DECORATION</a>
+                    </div>
+                  </div>`
+                  document.getElementById("main").innerHTML=s
+              }catch(error){
+                  console.log("error");
+              }
+          }
+          myFunction()
+
+          async function searchFunction(){
+              let inp=document.getElementById("inp");
+              try{
+                  res=await fetch("https://dummyjson.com/products")
+                  data=await res.json();
+                  console.log(data);
+                  s="";
+                  let text=inp.value
+                  data.products.filter((dt)=>{
+                      if(dt.category.startsWith(text)){
+                        s+=`<div class="col-lg-4">
+                    <div class="caard">
+                    <a href="brands.html?id=$laptops">LAPTOPS</a>
+                    </div>
+                  </div>
+                  
+                  <div class="col-lg-4">
+                    <div class="caard">
+                    <a href="brands.html?id=smartphones">SMARTPHONES</a>
+                    </div>
+                  </div>
+                  
+                  <div class="col-lg-4">
+                    <div class="caard">
+                    <a href="brands.html?id=fragrances">FRANGRANCES</a>
+                    </div>
+                  </div>
+                  
+                  <div class="col-lg-4">
+                    <div class="caard">
+                    <a href="brands.html?id=skincare">SKINCARE</a>
+                    </div>
+                  </div>
+                  
+                  <div class="col-lg-4">
+                    <div class="caard">
+                    <a href="brands.html?id=groceries">GROCERIES</a>
+                    </div>
+                  </div>
+                  
+                  <div class="col-lg-4">
+                    <div class="caard">
+                    <a href="brands.html?id=home-decoration">HOME-DECORATION</a>
+                    </div>
+                  </div>`
+                      }
+                      console.log(dt.title);
+                    
+                  })
+                  document.getElementById("main").innerHTML=s
+              }catch(error){
+                  console.log("error");
+              }
+          }
+          </script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  </body>
+  </html>
